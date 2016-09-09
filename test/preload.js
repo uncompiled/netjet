@@ -185,6 +185,14 @@ describe('preload', function () {
           .expect(200, done);
       });
 
+      it('should not create Link header for stylesheet', function (done) {
+        request(this.server)
+          .get('/blog/single-stylesheet-and-html-import')
+          .expect('Content-Type', 'text/html; charset=utf-8')
+          .expect('Link', '</header.html>; rel=preload; as=document')
+          .expect(200, done);
+      });
+
       it('should not create Link header for image', function (done) {
         request(this.server)
           .get('/blog/single-image-and-html-import')
@@ -389,6 +397,15 @@ function createServer(options) {
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/html; charset=utf-8');
       res.write('<img src="/images/2015/12/Cairo.jpg" alt="Cairo" /><link rel="import" href="/header.html">');
+      res.end();
+    }
+  });
+
+  router.route('/blog/single-stylesheet-and-html-import', {
+    GET: function (req, res) {
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+      res.write('<link rel="import" href="/header.html"><link href="/app.min.css" rel="stylesheet" />');
       res.end();
     }
   });
