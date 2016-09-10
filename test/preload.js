@@ -44,7 +44,7 @@ describe('preload', function () {
           images: true,
           scripts: false,
           styles: false,
-          htmlImports: false
+          html: false
         });
       });
 
@@ -79,7 +79,7 @@ describe('preload', function () {
           images: false,
           scripts: true,
           styles: false,
-          htmlImports: false
+          html: false
         });
       });
 
@@ -122,7 +122,7 @@ describe('preload', function () {
           images: false,
           scripts: false,
           styles: true,
-          htmlImports: false
+          html: false
         });
       });
 
@@ -165,7 +165,7 @@ describe('preload', function () {
           images: false,
           scripts: false,
           styles: false,
-          htmlImports: true
+          html: true
         });
       });
 

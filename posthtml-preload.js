@@ -31,7 +31,7 @@ module.exports = function (options, foundEntries) {
       });
     }
 
-    if (options.htmlImports) {
+    if (options.html) {
       matchers.push({
         tag: 'link',
         attrs: {
